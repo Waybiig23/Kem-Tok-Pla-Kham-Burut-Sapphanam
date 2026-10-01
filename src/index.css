@@ -1,0 +1,125 @@
+@import "tailwindcss";
+
+@layer base {
+  body {
+    font-family: 'Prompt', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  }
+  
+  .font-display {
+    font-family: 'Mali', 'Prompt', cursive, sans-serif;
+  }
+}
+
+@keyframes waveSlow {
+  0%, 100% {
+    transform: translateX(0) translateY(0);
+  }
+  50% {
+    transform: translateX(-25px) translateY(6px);
+  }
+}
+
+@keyframes waveFast {
+  0%, 100% {
+    transform: translateX(0) translateY(0);
+  }
+  50% {
+    transform: translateX(30px) translateY(-5px);
+  }
+}
+
+@keyframes boatBob {
+  0%, 100% {
+    transform: rotate(-1.5deg) translateY(0);
+  }
+  50% {
+    transform: rotate(2deg) translateY(-8px);
+  }
+}
+
+@keyframes bubbleFloat {
+  0% {
+    transform: translateY(100%) scale(0.6);
+    opacity: 0;
+  }
+  20% {
+    opacity: 0.7;
+  }
+  80% {
+    opacity: 0.8;
+  }
+  100% {
+    transform: translateY(-80px) scale(1.1);
+    opacity: 0;
+  }
+}
+
+@keyframes fishTailWiggle {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(14deg);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    opacity: 0.3;
+    transform: translateX(-100%);
+  }
+  50% {
+    opacity: 0.7;
+  }
+  100% {
+    opacity: 0.3;
+    transform: translateX(100%);
+  }
+}
+
+.animate-wave-slow {
+  animation: waveSlow 8s ease-in-out infinite;
+}
+
+.animate-wave-fast {
+  animation: waveFast 5s ease-in-out infinite;
+}
+
+.animate-boat {
+  animation: boatBob 4s ease-in-out infinite;
+}
+
+.animate-fish-tail {
+  transform-origin: right center;
+  animation: fishTailWiggle 0.4s ease-in-out infinite;
+}
+
+@keyframes struggleWiggle {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  20% { transform: translate(-4px, 2px) rotate(-4deg); }
+  40% { transform: translate(4px, -2px) rotate(4deg); }
+  60% { transform: translate(-5px, -1px) rotate(-5deg); }
+  80% { transform: translate(5px, 2px) rotate(5deg); }
+  100% { transform: translate(0, 0) rotate(0deg); }
+}
+
+.animate-struggle {
+  animation: struggleWiggle 0.1s ease-in-out infinite;
+}
+
+/* Custom scrollbar for leaderboard & study sheet */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: rgba(15, 23, 42, 0.2);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(56, 189, 248, 0.4);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(56, 189, 248, 0.7);
+}

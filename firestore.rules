@@ -1,0 +1,35 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    // Helper functions for validating leaderboard records
+    function isValidLeaderboardRecord(data) {
+      return data.keys().hasAll(['id', 'playerName', 'avatar', 'score', 'fishCaught', 'correctCount', 'wrongCount', 'accuracy', 'rankTitle'])
+        && data.id is string
+        && data.playerName is string && data.playerName.size() > 0 && data.playerName.size() <= 50
+        && data.avatar is string
+        && data.score is number && data.score >= 0
+        && data.fishCaught is number && data.fishCaught >= 0
+        && data.correctCount is number && data.correctCount >= 0
+        && data.wrongCount is number && data.wrongCount >= 0
+        && data.accuracy is number && data.accuracy >= 0 && data.accuracy <= 100
+        && data.rankTitle is string;
+    }
+
+    match /leaderboard/{recordId} {
+      // Anyone can read the global ranking
+      allow read: if true;
+
+      // Anyone can post their score upon finishing a game
+      allow create: if isValidLeaderboardRecord(request.resource.data)
+                    && request.resource.data.id == recordId;
+
+      // Immutable once recorded - cannot be altered or wiped by arbitrary clients
+      allow update, delete: if false;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

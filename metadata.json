@@ -1,0 +1,6 @@
+{
+  "name": "เกมตกปลาคำบุรุษสรรพนาม (Thai Pronoun Fishing Game)",
+  "description": "เกมตกปลาคำบุรุษสรรพนาม 2 บุรุษ (บุรุษที่ ๑ และ บุรุษที่ ๒) แยกปลาใส่ตะกร้า พร้อมระบบพิมพ์ชื่อบันทึกคะแนนและคลังความรู้ไวยากรณ์ไทย",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

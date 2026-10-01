@@ -1,0 +1,90 @@
+{
+  "entities": {
+    "LeaderboardRecord": {
+      "title": "LeaderboardRecord",
+      "description": "A score record submitted by a player upon completing a fishing or quiz game session.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique record identifier"
+        },
+        "playerName": {
+          "type": "string",
+          "description": "Display name of the player",
+          "maxLength": 50
+        },
+        "avatar": {
+          "type": "string",
+          "description": "Chosen emoji avatar icon"
+        },
+        "score": {
+          "type": "number",
+          "description": "Final score earned in the session"
+        },
+        "fishCaught": {
+          "type": "number",
+          "description": "Total number of fish sorted/caught"
+        },
+        "correctCount": {
+          "type": "number",
+          "description": "Total number of correct answers"
+        },
+        "wrongCount": {
+          "type": "number",
+          "description": "Total number of wrong attempts"
+        },
+        "maxCombo": {
+          "type": "number",
+          "description": "Highest combo streak"
+        },
+        "accuracy": {
+          "type": "number",
+          "description": "Accuracy percentage (0 - 100)"
+        },
+        "gameMode": {
+          "type": "string",
+          "description": "Game mode played"
+        },
+        "difficulty": {
+          "type": "string",
+          "description": "Game difficulty played"
+        },
+        "date": {
+          "type": "string",
+          "description": "Formatted date string of the attempt"
+        },
+        "rankTitle": {
+          "type": "string",
+          "description": "Rank title awarded based on score and accuracy"
+        },
+        "type": {
+          "type": "string",
+          "enum": ["fishing", "quiz"],
+          "description": "Type of game session"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "Timestamp ISO string of record creation"
+        }
+      },
+      "required": [
+        "id",
+        "playerName",
+        "avatar",
+        "score",
+        "fishCaught",
+        "correctCount",
+        "wrongCount",
+        "accuracy",
+        "rankTitle"
+      ]
+    }
+  },
+  "firestore": {
+    "/leaderboard/{recordId}": {
+      "schema": "LeaderboardRecord",
+      "description": "Collection of verified game scores and leaderboard records submitted by players."
+    }
+  }
+}
